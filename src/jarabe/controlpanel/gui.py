@@ -255,8 +255,12 @@ class ControlPanel(Gtk.Window):
                          globals(), locals(), ['model'])
         model = ModelWrapper(mod)
 
+        self.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.WATCH))
+
+        GObject.idle_add(self._create_section_view, view_class, model, option)
+
+    def _create_section_view(self, view_class, model, option):
         try:
-            self.get_window().set_cursor(Gdk.Cursor.new(Gdk.CursorType.WATCH))
             self._section_view = view_class(model,
                                             self._options[option]['alerts'])
 
