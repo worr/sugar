@@ -169,7 +169,7 @@ def _begin_desktop_startup():
     global _starting_desktop
     _starting_desktop = True
 
-    ui_service = UIService()
+    UIService()
 
     session_manager = get_session_manager()
     session_manager.start()
@@ -181,8 +181,8 @@ def _begin_desktop_startup():
 def __intro_window_done_cb(window):
     _begin_desktop_startup()
 
-    global window_manager_started
-    if window_manager_started:
+    global _window_manager_started
+    if _window_manager_started:
         _complete_desktop_startup()
 
 def cleanup_temporary_files():

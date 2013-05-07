@@ -202,8 +202,4 @@ class KeyHandler(object):
 
 def setup(frame):
     global _instance
-
-    if _instance:
-        del _instance
-
     _instance = KeyHandler(frame)
